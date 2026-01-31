@@ -1,0 +1,162 @@
+///////////////////////
+// Environment Setup //
+///////////////////////
+
+01. Install Sublime and MinGW.
+02. Configure G++ by adding MinGW bin path to the System Variable and test  by running "g++ --version".
+03. Create a folder with three files "text.cpp", "inputf.in", "outputf.in".
+04. Open the folder in Sublime and press Alt+Shift+3 and open three files in 3 panes.
+05. Create new Build System (Tools -> Build System -> New Build System) and add this:
+
+{
+"cmd": ["g++.exe","-std=c++14", "${file}", "-o", "${file_base_name}.exe", "&&" , "${file_base_name}.exe<inputf.in>outputf.in"],
+"selector":"source.cpp",
+"shell":true,
+"working_dir":"$file_path"
+}
+
+and save with any_name.sublime-build and select it.
+06. Run with Clt+Shift+B and make sure cin and cout working
+07. Configure auto save in Preference -> Settings and "save_on_focus_lost": true" this line in right pane.
+
+
+
+//////////////////
+// C++ Template //
+//////////////////
+
+#include <bits/stdc++.h>
+using namespace std;
+#define fast() ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+#define ll long long
+
+void solve()
+{
+    int n; cin >> n;
+    //Solution Script
+}
+
+int main()
+{
+    fast();
+
+    int t = 1;
+    // int t; cin >> t;
+
+    while(t--)
+    {
+        solve();
+    }
+    return 0;
+}
+
+// +-------------------+ 
+// | SOLVED BY T0RN4D0 |
+// +-------------------+
+
+
+
+//////////////////////
+// Range and Orders //
+//////////////////////
+
+- Datatype Calculation Order:
+Double < Float < Long Long Int < Long Int < Int < Char
+
+- Operator Precedence:
+a++, a--, type(), a(), a*b, a/b, a%b, a+b, a-b, ==, !=, =, +=, -=, *=, /=, %=, 
+
+- Datatype Range
+- 10^9 < int < 10^9
+- 10^12 < long int < 10^12
+- 10^18 < long long int < 10^18
+- Order of 10^5 >= Local Array (1e5 or 2e5)
+- Order of 10^7 >= Global Array (Size must be a const)
+
+- Precision Error
+Double and Float doesn't save the exact number.
+
+
+
+/////////////
+// Numbers //
+/////////////
+
+- Log10^Number = Length of the Number (Log10^33 = 2)
+- Number % 10 = Last Digit of the Number (512 % 10 = 2)
+- Number / 10 = Last digit stripted Number (133 / 10 = 13) 
+# increase the number of zero if more than one digit needed
+- Reverse a number:
+
+int n; cin >> n;
+int newN = 0;
+
+while(n != 0) {
+    newN = (newN * 10) + (n%10);
+    n /= 10;
+}
+- 10^9 == 1e9
+
+
+
+///////////////////////
+// Special Functions //
+///////////////////////
+
+- Swap: swap(element1, element2);
+- Length/Size: string.size();
+- Reverse: reverse(string.begin(), string.end());
+- Line Input: getline(cin, string_name); (If used after cin, have a line break after that cin).
+- Smallest number in vector:  
+
+auto min_it = min_element(numbers.begin(), numbers.end());
+int sn = *min_it;
+
+
+
+////////////////
+// Convertion //
+////////////////
+
+- Int to Long Long Int Converstion: int_a * 1LL * int_b;
+- Extract Digit from Strings: s[i] - '0';
+
+
+
+/////////////
+// Fastest //
+/////////////
+
+- Unordered Map = Fastest unordered list
+Syntax: unordered_map<string,int> map_name;
+Adding New Item: map_name[item] = 0;
+
+- Sieve of Eratosthenes = Fastest prime finder in range of 10^6
+Syntax:
+const int MAX_LIMIT = 1000000;
+vector<bool> is_prime(MAX_LIMIT + 1, true);
+
+void sieve() {
+
+    is_prime[0] = false;
+    is_prime[1] = false;
+
+    int limit = (int) sqrt(MAX_LIMIT);
+
+    for(int i = 2; i <= limit; i++) {
+        if (is_prime[i]) {
+            for(int j = i*i; j <= MAX_LIMIT; j+=i) {
+                is_prime[j] = false;
+            }
+        }
+    }
+}
+Explanation: It's make a vector with all the digits from 0 to 10^6 and assume every digit is prime. Then make 0 and 1 false or not prime. Then set 2 as prime and make every other digit divisible by 2 false. Then set 3 prime and make every other digit divisible by 3 false. And so on. Example:
+
+Premade vector
+[true, true, true, true, true, true, true, true, true, true, true, true, ......]
+
+After the loop
+[false, false, true, true, false, true, false, true, false, false, false, true, ......]
+
+Now, to check if a number is prime, check that index if it's true. If so yes or else no.
