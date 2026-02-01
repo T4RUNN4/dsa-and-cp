@@ -3,8 +3,8 @@ using namespace std;
 
 int main() {
     int n=4;
-    int sp=3;
-    int ep=3;
+    int sp=(n-1);
+    int ep=(n-1);
     bool rev=false;
 
     for(int i=0; i<((2*n) -1); i++) {
@@ -25,10 +25,10 @@ int main() {
             ep++;
         }
 
-        if(i==3) {
+        if(i==(n-1)) {
             rev = true;
-            sp=1;
-            ep=5;
+            sp+=2;
+            ep-=2;
         }
     }
 }
