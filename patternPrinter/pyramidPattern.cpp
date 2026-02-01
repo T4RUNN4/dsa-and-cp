@@ -21,6 +21,7 @@ int main() {
         c++;
         cout << "\n";
     }
+    return 0;
 }
 
 //       1

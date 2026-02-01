@@ -15,6 +15,7 @@ int main() {
         cout << "\n";
         sp++;
     }
+    return 0;
 }
 
 // 1 1 1 1 
