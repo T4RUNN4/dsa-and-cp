@@ -15,6 +15,7 @@ int main() {
     }
 
     cout << prob << "\n";
+    return 0;
 }
 
 // Qus

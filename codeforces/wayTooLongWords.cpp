@@ -20,6 +20,8 @@ int main() {
         cin >> s;
         shrink(s);
     }
+
+    return 0;
 }
 
 // Qus

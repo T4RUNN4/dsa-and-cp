@@ -29,6 +29,8 @@ int main() {
     for(int i=0; i<t; i++) {
         solve();
     }
+    
+    return 0;
 }
 
 // Ques
